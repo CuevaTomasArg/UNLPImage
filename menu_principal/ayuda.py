@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from mostrar_pantalla import mostrar_pantalla
+from menu_principal import mostrar_pantalla
 
 class Ayuda:
     def __init__(self):
@@ -21,4 +21,4 @@ class Ayuda:
         self.window = sg.Window("Ayuda", self.layout,size=(1400,992), resizable=True, element_padding=((128,128),(64,64)),margins=(0,0),element_justification="center", finalize=True)
 
     def iniciar(self):
-        mostrar_pantalla(self.window)
+        mostrar_pantalla.mostrar_pantalla(self.window)
