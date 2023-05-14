@@ -10,6 +10,10 @@ sg.theme('Black')
 
 class MenuPrincipal:
     def __init__(self):
+        """
+        Esta interfaz es la principal de la aplicación. Desde aquí se puede acceder a todas las funcionalidades de la aplicación.
+        La navegación es posible gracias al diccionario "events" el cual contiene todos los eventos posibles de la interfaz.
+        """
         user =traer_usuario_logueado() 
         imagen_path = traer_ruta_imagen(user)
         nick = [
@@ -49,6 +53,9 @@ class MenuPrincipal:
             "-EDITAR PERFIL-": lambda values: self.actualizar_imagen(),
         }  
     def actualizar_imagen(self):
+        """
+        Esta funcion actualiza la imagen de perfil del usuario. al momento de editar el perfil.
+        """
         EditarPerfil().iniciar()
         user =traer_usuario_logueado() 
         imagen_path = traer_ruta_imagen(user)

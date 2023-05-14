@@ -2,11 +2,11 @@ import PySimpleGUI as sg
 from PIL import Image
 import os
 import io
-from menu_principal import settings
+from menu_principal.settings import FUENTE_IMAGENES_POR_DEFECTO,GUARDADO_COLLAGES_POR_DEFECTO
 
 sg.theme("Black")
-ruta_imagenes=settings.FUENTE_IMAGENES_POR_DEFECTO
-ruta_nuevo_collage=settings.GUARDADO_COLLAGES_POR_DEFECTO
+ruta_imagenes=FUENTE_IMAGENES_POR_DEFECTO
+ruta_nuevo_collage=GUARDADO_COLLAGES_POR_DEFECTO
 
 
 class GeneradorCollage:
@@ -37,6 +37,7 @@ class GeneradorCollage:
                 self.evento_elegir_archivo(values)
             elif event == "-GUARDAR-":
                 self.evento_guardar()
+                self.window.close()
 
     #METODO
     def evento_elegir_archivo(self, values):   

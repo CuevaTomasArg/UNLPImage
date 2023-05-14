@@ -2,12 +2,12 @@ import PySimpleGUI as sg
 import os
 import io
 from PIL import Image, ImageDraw, ImageFont
-from menu_principal import settings
+from menu_principal.settings import FUENTE_IMAGENES_POR_DEFECTO,GUARDADO_MEMES_POR_DEFECTO
 
 sg.theme("Black")
 
-ruta_imagenes=settings.FUENTE_IMAGENES_POR_DEFECTO
-ruta_nuevos_memes=settings.GUARDADO_MEMES_POR_DEFECTO
+ruta_imagenes=FUENTE_IMAGENES_POR_DEFECTO
+ruta_nuevos_memes=GUARDADO_MEMES_POR_DEFECTO
 
 class GeneradorMemes:
     #CONSTRUCTOR 
@@ -82,6 +82,8 @@ class GeneradorMemes:
             else:
                 contador_nueva_imagen += 1     
         sg.popup("Imagen Guardada Con Exito")
+        self.window.close() 
+      
 
     #METODO
     def evento_editar_imagen_con_texto(self,values):

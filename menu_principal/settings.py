@@ -7,9 +7,9 @@ DATABASE = os.path.normpath(os.getcwd() + "/" + "DB")
 MULTIMEDIA = os.path.normpath(os.getcwd() + "/" +"multimedia")
 
 DATABASE_DIR = os.path.abspath(os.path.join(os.path.expanduser("~"), DATABASE)) + os.sep
-METADATA_DIR = DATABASE_DIR + "metadata.csv"
+METADATA_DIR = os.path.normpath(DATABASE_DIR + "metadata.csv")
 
-METADATA_DIR_LOGS = DATABASE_DIR + "logs_sistema.csv"
+METADATA_DIR_LOGS = os.path.normpath(DATABASE_DIR + "/" + "logs_sistema.csv")
 
 
 LOGOS_APLICACION = os.path.normpath(MULTIMEDIA + "/" +"imagenes_logos")

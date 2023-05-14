@@ -1,25 +1,24 @@
 import PySimpleGUI as sg
-#import json
 import os
-from menu_principal import settings
-from menu_principal import acceso_a_datos as ad
+from menu_principal.settings import PERFILES_AVATARS
+from menu_principal.acceso_a_datos import traer_usuario_logueado,traer_ruta_imagen,info_de_todos_los_perfiles,guardar_usuario_logueado,actualizar_perfiles
 
 sg.theme("Black")
 
-ruta_perfiles=settings.PERFILES_AVATARS
+ruta_perfiles=PERFILES_AVATARS
 
 class EditarPerfil:
     #CONSTRUCTOR 
     def __init__(self):
 
-        self.diccionario=ad.traer_usuario_logueado() #devuelve una lista con un solo usuario
+        self.diccionario=traer_usuario_logueado() 
 
         self.alias = self.diccionario["alias"]   
-        self.nombre = self.diccionario['nombre']
-        self.edad = self.diccionario['edad']
-        self.imagen = self.diccionario['imagen']
+        self.nombre = self.diccionario["nombre"]
+        self.edad = self.diccionario["edad"]
+        self.imagen = self.diccionario["imagen"]
         
-        self.ruta_imagen = ad.traer_ruta_imagen(self.diccionario)
+        self.ruta_imagen = traer_ruta_imagen(self.diccionario)
 
         self.lista = ["Femenino", "Masculino"]
 
@@ -37,13 +36,13 @@ class EditarPerfil:
         ]
 
         columna_derecha =[   
-            [sg.Image(key="-IMAGEN-", filename=self.ruta_imagen)],#self.diccionario["imagen"])],  
-            [sg.Input(key="-ELEGIR ARCHIVO-", enable_events=True, visible=False,default_text=self.diccionario["imagen"]), 
-            sg.FileBrowse("Seleccionar avatar", target="-ELEGIR ARCHIVO-",file_types=(("Archivos PNG", "*.png"),("JPEG", "*.jpg")),initial_folder=ruta_perfiles)]                      
+            [sg.Image(key="-IMAGEN-", filename=self.ruta_imagen)], 
+            [sg.Input(key="-ELEGIR ARCHIVO-", enable_events=True, visible=False,default_text=self.diccionario["imagen"]),
+            sg.FileBrowse("Seleccionar avatar", tooltip="Extensión valida .png", target="-ELEGIR ARCHIVO-",file_types=[("Archivos PNG", "*.png")],initial_folder=ruta_perfiles)]                      
         ]
 
         self.layout =[ 
-            [sg.Text("Editar Perfil",font='Any 15'),sg.Push(),sg.Button("< Volver",key="-VOLVER-",font="Any 10")],
+            [sg.Text("Editar Perfil",font="Any 15"),sg.Push(),sg.Button("< Volver",key="-VOLVER-",font="Any 10")],
             [sg.Column(columna_izquierda),sg.Column(columna_derecha)],
             [sg.Push(),sg.Button("Guardar",key="-GUARDAR-", disabled=True)]                   
         ]
@@ -89,6 +88,15 @@ class EditarPerfil:
         self.window["-GUARDAR-"].update(disabled=False)
         if values["-ELEGIR ARCHIVO-"]:
             self.window["-IMAGEN-"].update(filename=values["-ELEGIR ARCHIVO-"])
+
+    #METODO
+    def evento_edad(self,values):
+        ok=False
+        if values["-EDAD-"].isdigit() and int(values["-EDAD-"]) > 0:
+             ok=True
+        else:
+            sg.popup("En edad se espera un valor entero positivo.")
+        return ok
         
 
     #METODO
@@ -96,7 +104,7 @@ class EditarPerfil:
         """Esta funcion verifica que todos los campos obligatorios esten llenos.
            En caso de que se cumpla dicha condicion se activa el boton Guardar"""
 
-        if (values['-NOMBRE-'].strip() != "" and values['-EDAD-'].strip() != ""):
+        if (values['-NOMBRE-'].strip() != "" and values['-EDAD-'].strip() != "" and self.evento_edad(values)):
             self.window["-GUARDAR-"].update(disabled=False)
             if values["-COMBO-"] != "Selecciona una opcion":
                 self.genero = values["-COMBO-"]
@@ -113,9 +121,7 @@ class EditarPerfil:
     def eventos_guardar_datos(self,values):
         """Esta funcion guarda los datos en el archivo json"""
 
-        # with open(settings.PATH_PERFILES) as archivo:
-        #     datos=json.load(archivo)
-        datos = ad.info_de_todos_los_perfiles()
+        datos = info_de_todos_los_perfiles()
         for usuario in datos:
             if usuario["alias"] == self.alias:
                 usuario["nombre"] = values ["-NOMBRE-"]
@@ -124,18 +130,13 @@ class EditarPerfil:
                 usuario["imagen"] = values ["-ELEGIR ARCHIVO-"]
                 break
         valor_imagen=usuario["imagen"]
-        # nombre_archivo=valor_imagen.replace(settings.PERFILES_AVATARS,"")
-        # nombre_archivo=nombre_archivo.replace(nombre_archivo[0],"")
         nombre_archivo = os.path.basename(valor_imagen)
         usuario["imagen"]=nombre_archivo  
-        ad.guardar_usuario_logueado(usuario)
-
-        # with open(settings.PATH_PERFILES,"w") as archivo:
-        #     json.dump(datos,archivo)
-        ad.actualizar_perfiles(datos)
+        guardar_usuario_logueado(usuario)
+        actualizar_perfiles(datos)
         sg.popup("Se edito el perfil con exito.")
 
-            
+           
 if __name__ =="__main__":
   pantalla = EditarPerfil() 
   pantalla.iniciar() 

@@ -1,15 +1,4 @@
-ruta_relativa,texto descriptivo,resolucion,tamanio,tipo,lista de tags,ultimo perfil que actualizo,ultima aztualizacion,
-
-Captura.JPG,,571x428,37394,image/jpeg,[],,2023-05-11 16:41:43,
-
-carpincho.png,,280x221,21962,image/jpeg,[],,2023-05-11 16:41:44,
-
-IMAGEN1.png,,450x300,126619,image/png,[],,2023-05-11 16:41:45,
-
-IMAGEN2.png,,450x300,139724,image/png,[],,2023-05-11 16:41:45,
-
-IMAGEN3.png,,450x300,122128,image/png,[],,2023-05-11 16:41:46,
-
-Capy.JPG,Aca hay un capybara,226x197,14904,image/jpeg,['Capy'],dos,2023-05-11 16:55:28
-
-
+ruta_relativa,texto descriptivo,resolucion,tamanio,tipo,lista de tags,ultimo perfil que actualizo,ultima aztualizacion
+IMAGEN3.png,Michi llorando,450 x 300,0.1164703369140625 MB,image/png,['Michi'],tres,2023-05-14 08:27:42
+IMAGEN1.png,El meme que siempre se uso para preguntarle a una persona porque no tiene dos dedos de frente,450 x 300,0.12075328826904297 MB,image/png,['Pensa'],dos,2023-05-14 08:42:34
+IMAGEN4.png,Rana llorando,450 x 300,0.1049041748046875 MB,image/png,[],dos,2023-05-14 09:10:56
