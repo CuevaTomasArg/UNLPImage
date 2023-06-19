@@ -1,31 +1,42 @@
-fecha,usuario,accion
-10/05/2023 10:52:17,dos,Valores por defecto en rutas de imagenes
-10/05/2023 10:52:18,dos,Valores por defecto en rutas de imagenes
-10/05/2023 10:52:18,dos,Valores por defecto en rutas de imagenes
-10/05/2023 10:52:20,dos,Cambio en rutas de imagenes
-10/05/2023 10:52:33,dos,Valores por defecto en rutas de imagenes
-10/05/2023 10:52:34,dos,Cambio en rutas de imagenes
-10/05/2023 10:52:40,dos,Valores por defecto en rutas de imagenes
-10/05/2023 10:52:41,dos,Cambio en rutas de imagenes
-10/05/2023 11:12:43,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:12:45,dos,Cambio en rutas de imagenes
-10/05/2023 11:34:51,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:36:08,tres,Valores por defecto en rutas de imagenes
-10/05/2023 11:36:10,tres,Valores por defecto en rutas de imagenes
-10/05/2023 11:36:10,tres,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:08,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:09,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:09,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:09,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:09,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:10,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:10,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:39:55,dos,Valores por defecto en rutas de imagenes
-10/05/2023 11:40:13,dos,Cambio en rutas de imagenes
-10/05/2023 11:40:13,dos,Cambio en rutas de imagenes
-12/05/2023 17:23:11,dos,Valores por defecto en rutas de imagenes
-12/05/2023 17:23:12,dos,Valores por defecto en rutas de imagenes
-12/05/2023 17:23:12,dos,Valores por defecto en rutas de imagenes
-12/05/2023 17:23:12,dos,Valores por defecto en rutas de imagenes
-14/05/2023 08:56:34,uno,Cambio en rutas de imagenes
-14/05/2023 09:02:20,dos,Valores por defecto en rutas de imagenes
+fecha,usuario,accion,valores,textos
+25/05/23 12:17:30,Carl,creacion_perfil,,
+25/05/23 18:17:30,Carl,cambio_configuracion_sistema,,
+25/05/23 19:17:30,Carl,nueva_imagen_clasificada,,
+25/05/23 20:17:30,Carl,nuevo_collage,parche.png;burns.png;ruta.png,vacaciones
+29/05/23 18:17:30,Facu,creacion_perfil,,
+30/05/23 18:17:30,Facu,modificacion_perfil,,
+31/05/23 18:17:30,Susu,creacion_perfil,,
+01/06/23 10:17:30,Susu,nuevo_meme,parche.png,salvado;siiii
+01/06/23 18:17:30,Josef,creacion_perfil,,
+03/06/23 11:17:30,Susu,nuevo_meme,burns.png,error404
+03/06/23 18:30:15,Susu,nuevo_collage,incendio.png;burns.png,calor
+03/06/23 19:57:10,Josef,modificacion_perfil,,
+03/06/23 22:17:30,Josef,nuevo_collage,parche.png;burns.png,arreglado
+07/06/23 18:17:30,Facu,nuevo_meme,zorro.png,caida;choque
+08/06/23 18:17:30,Facu,nuevo_meme,spidermans.png,system32
+08/06/23 19:17:30,Dam,creacion_perfil,,
+10/06/23 13:17:30,Carl,cambio_configuracion_sistema,,
+10/06/23 14:17:30,Carl,nuevo_meme,ruta.png,llegamos;siiii
+10/06/23 15:17:30,Josef,modificacion_perfil,,
+10/06/23 13:17:30,Josef,nuevo_collage,marge.png;ola.png,Mar del Plata
+10/06/23 17:17:30,Josef,nuevo_collage,spidermans.png;inteligente.png;zorro.png,aaahhh
+10/06/23 18:17:30,Josef,cambio_configuracion_sistema,,
+10/06/23 21:17:30,Dam,cambio_imagen_clasificada,,
+17/06/23 12:17:30,Paulita,creacion_perfil,,
+17/06/23 15:17:30,Paulita,nuevo_collage,ola.png;tumba.png;zorro.png,saludable
+17/06/23 16:17:30,Paulita,nueva_imagen_clasificada,,
+17/06/23 18:17:30,Susu,nuevo_collage,ruta.png;burns.png;spidermans.png,Viaje
+17/06/23 19:17:30,Dam,cambio_imagen_clasificada,,
+22/06/23 18:17:30,Susu,cambio_configuracion_sistema,,
+25/06/23 18:17:30,Susu,cambio_imagen_clasificada,,
+25/06/23 22:17:30,Josef,nuevo_collage,spidermans.png;parche.png;burns.png,noche
+25/06/23 23:17:30,Facu,nuevo_meme,inteligente.png,Linux;Mac;Windows
+01/07/23 12:17:30,Dam,nuevo_collage,marge.png;burns.png,Bariloche
+01/07/23 14:17:30,Carl,nuevo_meme,inteligente.png,calculadora
+01/07/23 15:17:30,Carl,cambio_imagen_clasificada,,
+01/07/23 16:17:30,Dam,nueva_imagen_clasificada,,
+01/07/23 18:17:30,Susu,nuevo_collage,parche;spidermans.png;inteligente.png;zorro.png,camping
+05/07/23 12:17:30,Carl,modificacion_perfil,,
+05/07/23 18:17:30,Paulita,nuevo_meme,incendio.png,trabajo
+05/07/23 19:17:30,Susu,modificacion_perfil,,
+05/07/23 20:17:30,Paulita,cambio_imagen_clasificada,tumba.png,descanso
