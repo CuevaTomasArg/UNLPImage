@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  python:
+    image: python:3.11.4
+    container_name: UNLPImage
+    volumes:
+      - ./docker_shared_folder/UNLPImage:/home/UNLPImage/app
+    working_dir: /home/UNLPImage/app
+    command: tail -f /dev/null
+    
+  jupyter:
+    image: jupyter/scipy-notebook:latest
+    container_name: jupyter-UNLPImage
+    environment:
+      NB_USER: UNLPImage
+      NB_GID: 1000
+      CHOWN_HOME: 'yes'
+      CHOWN_HOME_OPTS: '-R'
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./docker_shared_folder/working_dir:/home/UNLPImage/working_dir
+    working_dir: /home/UNLPImage/working_dir
