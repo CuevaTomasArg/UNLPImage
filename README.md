@@ -61,3 +61,9 @@ pip install -r requirements.txt
 ```
 Ya estamos listos para correr nuestro entorno.
 
+## Objetivos proximos
+* Poder crear el ambiente para desarrollar la aplicacion
+* Cambiar la base de datos de archivos por una base de datos PostgreSQL
+* Conectarse a la base de datos con SQLAlchemy y Psycopg2
+* Utilizar Polars en vez de pandas y numpy para hacer operaciones en el analisis de datos
+* Conectarme a la base de datos desde Jupyter para extraer los datos necesarios para hacer operaciones
