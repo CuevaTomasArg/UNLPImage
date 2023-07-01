@@ -1,25 +1,25 @@
 import PySimpleGUI as sg
 
-from ...inicio.vista_inicio import inicio as ini
-from ..settings_presentacion import (
+from system.inicio.vista_inicio import inicio as ini
+from system.presentacion.settings_presentacion import (
     LOGO_INFORMATICA,
     LOGO_UNLP,
     LOGO_UNLPIMAGE,
 )
 
-sg.theme('Black')
+sg.theme("Black")
 
 def crear_layout():
-    '''
+    """
     Crea el layout para la pantalla
-    '''
+    """
     logo_principal = [
         [sg.VPush()],
         [sg.Image(LOGO_UNLPIMAGE, size=(800, 210), subsample=2)],
         [sg.VPush()],
     ]
 
-    boton_inferior = [sg.Push(), sg.Button('Empezar', key='-EMPEZAR-'), sg.Push()]
+    boton_inferior = [sg.Push(), sg.Button("Empezar", key="-EMPEZAR-"), sg.Push()]
 
     logos_adicionales = [
         [sg.VPush()],
@@ -35,13 +35,13 @@ def crear_layout():
 
 
 def ejecutar():
-    window = sg.Window('unlpimage', crear_layout(), size=(800, 600))
+    window = sg.Window("unlpimage", crear_layout(), size=(800, 600))
 
     while True:
         event, values = window.read()
         if event == sg.WINDOW_CLOSED:
             break
-        if event == '-EMPEZAR-':
+        if event == "-EMPEZAR-":
             window.close()
             ini.ejecutar()
             break
@@ -49,5 +49,5 @@ def ejecutar():
     window.close()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     ejecutar()

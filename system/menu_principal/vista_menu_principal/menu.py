@@ -1,16 +1,18 @@
 import PySimpleGUI as sg
 
 from compartidos.acceso_a_datos import (
-    traer_ruta_imagen,
+    traer_ruta_imagen_avatar,
     traer_usuario_logueado,
 )
 from compartidos.mostrar_pantalla import mostrar_pantalla
-from ...ayuda.vista_ayuda.ayuda import Ayuda
-from ...collage.vista_collage.generador_collage import GeneradorCollage
-from ...configuracion.vista_configuracion.configuracion import ejecutar as ec
-from ...etiquetar_imagen.vista_etiquetar_imagen.etiquetar_imagenes import EtiquetarImagenes
-from ...meme.vista_meme.generador_memes import GeneradorMemes
-from ...perfil.vista_perfil.editar_perfil import EditarPerfil
+from system.ayuda.vista_ayuda.ayuda import Ayuda
+from system.collage.vista_collage.generador_collage import GeneradorCollage
+from system.configuracion.vista_configuracion.configuracion import ejecutar as ec
+from system.etiquetar_imagen.vista_etiquetar_imagen.etiquetar_imagenes import (
+    EtiquetarImagenes,
+)
+from system.meme.vista_meme.generador_memes import GeneradorMemes
+from system.perfil.vista_perfil.editar_perfil import EditarPerfil
 
 sg.theme('Black')
 
@@ -28,7 +30,7 @@ class MenuPrincipal:
         """
 
         user = traer_usuario_logueado()
-        imagen_path = traer_ruta_imagen(user)
+        imagen_path = traer_ruta_imagen_avatar(user)
         nick = [
             [sg.Image(filename=imagen_path, pad=(0, 0), enable_events=True, key="-EDITAR PERFIL-")],
             [sg.Text(user["alias"], font=("Helvetica", 20), pad=(0, 0))]
@@ -60,14 +62,19 @@ class MenuPrincipal:
             "-GENERAR COLLAGE-": lambda values: GeneradorCollage().iniciar(),
             "-EDITAR PERFIL-": lambda values: self.actualizar_imagen(),
         }
-
+        """
+            El diccionario events permite llamar a cada vista de la aplicación a través de la clave con el nombre representativo de cada
+            elemento que se encuentra en dicha vista. Sumado a un metodo de esta clase que se tubo que implementar, la cual es "actualizar imagen.
+            Actualizar imagen hace lo mismo que los demás valores dentro del diccionario, llama a la vista de editar perfil y se actualiza la imagen
+            de perfil que haya escogido el usuario.
+        """
     def actualizar_imagen(self):
         """
         Actualiza la imagen de perfil del usuario después de editar el perfil.
         """
         EditarPerfil().iniciar()
         user = traer_usuario_logueado()
-        imagen_path = traer_ruta_imagen(user)
+        imagen_path = traer_ruta_imagen_avatar(user)
         self.window["-EDITAR PERFIL-"].update(filename=imagen_path)
 
     def iniciar(self):

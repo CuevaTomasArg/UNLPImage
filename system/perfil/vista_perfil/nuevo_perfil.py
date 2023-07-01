@@ -1,14 +1,14 @@
 import PySimpleGUI as sg
 
-from compartidos.acceso_a_datos import (info_de_todos_los_perfiles,
-                                        registrar_accion_de_usuario)
-from configuracion.settings import PERFILES_AVATARS                        
-
-from ...inicio.vista_inicio import inicio as ini
-from ..acceso_a_datos_perfiles import guardar_perfil_en_base_de_perfiles
-from ..settings_perfil import AVATAR_PREDEFINIDO, MENSAJE_PERFIL
-from ..validacion_perfil import validar_usuario
-
+from compartidos.acceso_a_datos import (
+    info_de_todos_los_perfiles,
+    registrar_accion_de_usuario,
+)
+from configuracion.settings import PERFILES_AVATARS
+from system.inicio.vista_inicio import inicio as ini
+from system.perfil.acceso_a_datos_perfiles import guardar_perfil_en_base_de_perfiles
+from system.perfil.settings_perfil import AVATAR_PREDEFINIDO, MENSAJE_PERFIL
+from system.perfil.validacion_perfil import validar_usuario
 
 sg.theme("Black")
 ruta_perfiles=PERFILES_AVATARS

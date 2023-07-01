@@ -4,9 +4,11 @@ import os
 import PySimpleGUI as sg
 from PIL import Image, ImageDraw, ImageFont
 
-from compartidos.acceso_a_datos import (cargar_rutas_directorio_imagenes,
-                                        registrar_accion_de_usuario,
-                                        traer_usuario_logueado)
+from compartidos.acceso_a_datos import (
+    cargar_rutas_directorio_imagenes,
+    registrar_accion_de_usuario,
+    traer_usuario_logueado,
+)
 from system.meme.acceso_a_datos_memes import obtener_text_boxes
 from system.meme.settings_meme import MENSAJE_MEME, PATH_FUENTES
 from system.meme.validacion_imagen import archivo_mismo_nombre

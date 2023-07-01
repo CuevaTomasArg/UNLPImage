@@ -1,13 +1,16 @@
 import csv
 import os
-from PIL import Image
 from datetime import datetime
-from .settings import (
-    MENSAJE_NUEVA_CLASIFICACION,
-    MENSAJE_MODIFICACION
-)
-from compartidos.acceso_a_datos import registrar_accion_de_usuario
+
+from PIL import Image
 from PySimpleGUI import popup
+
+from compartidos.acceso_a_datos import registrar_accion_de_usuario
+from system.etiquetar_imagen.settings import (
+    MENSAJE_MODIFICACION,
+    MENSAJE_NUEVA_CLASIFICACION,
+)
+
 
 def generate_file_to_project(path_metadata):
     """

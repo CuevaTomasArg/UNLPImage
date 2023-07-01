@@ -1,10 +1,16 @@
 import os
+
 import PySimpleGUI as sg
-from ..acceso_db import save_metadata, get_info_image
-from compartidos.acceso_a_datos import cargar_rutas_directorio_imagenes, traer_ruta_imagen, traer_usuario_logueado
+
+from compartidos.acceso_a_datos import (
+    cargar_rutas_directorio_imagenes,
+    traer_ruta_imagen_avatar,
+    traer_usuario_logueado,
+)
 from compartidos.mostrar_pantalla import mostrar_pantalla
-from ..settings import METADATA_DIR
-from ..utils_tags_text import delete_tag, append_text
+from system.etiquetar_imagen.acceso_db import get_info_image, save_metadata
+from system.etiquetar_imagen.settings import METADATA_DIR
+from system.etiquetar_imagen.utils_tags_text import append_text, delete_tag
 
 
 class EtiquetarImagenes:
@@ -42,9 +48,10 @@ class EtiquetarImagenes:
         self.repositorio = cargar_rutas_directorio_imagenes()
         diccionario = traer_usuario_logueado()
         self.alias = diccionario["alias"]
-        self.ruta_imagen = traer_ruta_imagen(diccionario)
+        self.ruta_imagen = traer_ruta_imagen_avatar(diccionario)
 
-        archivos = os.listdir(self.repositorio[0])
+        archivos = os.listdir(self.repositorio[0]) # Crea una lista de nombres con los archivos y directorios dentro de la rusta especificada por el parametro
+
         selector = [
             [sg.Listbox(values=archivos, size=(30, 6), key='-LIST-', enable_events=True)],
             [sg.Text('Etiquetas:')],

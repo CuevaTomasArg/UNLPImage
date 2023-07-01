@@ -10,7 +10,7 @@ from compartidos.acceso_a_datos import (
     traer_usuario_logueado,
 )
 from system.collage.acceso_a_datos_collage import chequear_campo_lista_tags
-from system.collage.settings_collage import MENSAJE_COLLAGE
+from system.collage.settings_collage import MENSAJE_COLLAGE,PATH_FUENTES
 from system.collage.validacion_imagen import archivo_mismo_nombre
 
 sg.theme("Black")
@@ -232,6 +232,16 @@ class DosImagenesCollage:
         self.collage.save(self.imagen_bytes, format="PNG")
         self.window["-PREVIEW-"].update(data=self.imagen_bytes.getvalue())
 
+    def fuentes_conversion(self):
+        """Esta funcion retorna un objeto que contiene
+         la fuente y el tamaño del texto
+        """
+        with open(
+            os.path.normpath(PATH_FUENTES), "rb"
+        ) as archivo_fuente:
+            return ImageFont.truetype(archivo_fuente, 20)
+
+
     def texto_sobre_collage(self):
         """Esta funcion edita el collage ya generado.
         Escribe texto sobre la imagen
@@ -239,7 +249,7 @@ class DosImagenesCollage:
 
         imagen = self.collage
         editor_img = ImageDraw.Draw(imagen)
-        fuente = ImageFont.truetype("arial.ttf", 20)
+        fuente = self.fuentes_conversion() 
         image_width, image_height = imagen.size
         text_width, text_height = fuente.getsize(self.texto)
         texto_x = 10

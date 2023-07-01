@@ -2,14 +2,17 @@ import os
 
 import PySimpleGUI as sg
 
-from compartidos.acceso_a_datos import (guardar_usuario_logueado,
-                                        info_de_todos_los_perfiles,
-                                        traer_ruta_imagen,
-                                        traer_usuario_logueado)
+from compartidos.acceso_a_datos import (
+    guardar_usuario_logueado,
+    info_de_todos_los_perfiles,
+    registrar_accion_de_usuario,
+    traer_ruta_imagen_avatar,
+    traer_usuario_logueado,
+)
 from configuracion.settings import PERFILES_AVATARS
-
-from ..acceso_a_datos_perfiles import actualizar_perfiles
-from ..validacion_perfil import validar_usuario_sin_alias
+from system.perfil.acceso_a_datos_perfiles import actualizar_perfiles
+from system.perfil.settings_perfil import MENSAJE_MODIFICACION
+from system.perfil.validacion_perfil import validar_usuario_sin_alias
 
 sg.theme("Black")
 
@@ -25,7 +28,7 @@ class EditarPerfil:
         self.nombre = self.diccionario["nombre"]
         self.edad = self.diccionario["edad"]
         self.imagen = self.diccionario["imagen"]
-        self.ruta_imagen = traer_ruta_imagen(self.diccionario)
+        self.ruta_imagen = traer_ruta_imagen_avatar(self.diccionario)
         self.lista = [FEMENINO, MASCULINO]
 
         columna_izquierda = [
@@ -170,6 +173,7 @@ class EditarPerfil:
         usuario["imagen"] = nombre_archivo
         guardar_usuario_logueado(usuario)
         actualizar_perfiles(datos)
+        registrar_accion_de_usuario(usuario["alias"], MENSAJE_MODIFICACION)
         sg.popup("Se edito el perfil con exito.")
 
 

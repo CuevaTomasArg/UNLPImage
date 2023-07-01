@@ -1,6 +1,6 @@
 import os
 
-from configuracion.settings import IMAGENES
+from configuracion.settings import CONFIGURACION, IMAGENES
 
 MENSAJE_COLLAGE = "nuevo_collage"
 
@@ -28,3 +28,5 @@ FORMATO_COLLAGE_SIETE = os.path.normpath(
 FORMATO_COLLAGE_OCHO = os.path.normpath(
     IMAGENES + "/" + "formato_collage" + "/" + "formato_ocho.png"
 )
+
+PATH_FUENTES = os.path.normpath(CONFIGURACION + "/" + "fuentes" + "/" + "arial.ttf")

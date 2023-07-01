@@ -4,21 +4,18 @@ import os
 import PySimpleGUI as sg
 from PIL import Image, ImageDraw, ImageFont
 
-from compartidos.acceso_a_datos import (
-    cargar_rutas_directorio_imagenes,
-    registrar_accion_de_usuario,
-    traer_usuario_logueado,
-)
+from compartidos.acceso_a_datos import (cargar_rutas_directorio_imagenes,
+                                        registrar_accion_de_usuario,
+                                        traer_usuario_logueado)
 from system.collage.acceso_a_datos_collage import chequear_campo_lista_tags
-from system.collage.settings_collage import MENSAJE_COLLAGE
+from system.collage.settings_collage import MENSAJE_COLLAGE, PATH_FUENTES
 from system.collage.validacion_imagen import archivo_mismo_nombre
-
 
 sg.theme("Black")
 tipo_de_archivo = [("PNG (*.png)", "*.png")]
 ruta_imagenes_collage_gral = cargar_rutas_directorio_imagenes()
 ruta_imagenes_collage = ruta_imagenes_collage_gral[0]
-ruta_nuevo_collage = ruta_imagenes_collage_gral[1]  
+ruta_nuevo_collage = ruta_imagenes_collage_gral[1]
 lista_dicci = []
 
 
@@ -156,9 +153,7 @@ class CuatroImagenesCollage:
 
         nombre_imagen = os.path.basename(self.filename)
         try:
-            resultado = chequear_campo_lista_tags(
-                nombre_imagen
-            )  
+            resultado = chequear_campo_lista_tags(nombre_imagen)
             if resultado:
                 sg.popup("¡ADVERTENCIA, ETIQUERAR IMAGEN!: ", nombre_imagen)
         except FileNotFoundError:
@@ -224,6 +219,13 @@ class CuatroImagenesCollage:
         self.collage.save(self.imagen_bytes, format="PNG")
         self.window["-PREVIEW-"].update(data=self.imagen_bytes.getvalue())
 
+    def fuentes_conversion(self):
+        """Esta funcion retorna un objeto que contiene
+        la fuente y el tamaño del texto
+        """
+        with open(os.path.normpath(PATH_FUENTES), "rb") as archivo_fuente:
+            return ImageFont.truetype(archivo_fuente, 20)
+
     def texto_sobre_collage(self):
         """Esta funcion edita el collage ya generado.
         Escribe texto sobre la imagen
@@ -231,7 +233,7 @@ class CuatroImagenesCollage:
 
         imagen = self.collage
         editor_img = ImageDraw.Draw(imagen)
-        fuente = ImageFont.truetype("arial.ttf", 20)
+        fuente = self.fuentes_conversion()
         image_width, image_height = imagen.size
         text_width, text_height = fuente.getsize(self.texto)
         texto_x = 10
